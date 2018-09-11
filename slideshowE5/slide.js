@@ -10,20 +10,26 @@ document.querySelector('.menu__prev').addEventListener("click", PrevSlide);
 document.addEventListener("keydown", keyboard);
 document.querySelector('.menu__pause').addEventListener("click", PausePlay);
 
+//set a interval so that the slider starts its auto mode
 Timer = setInterval(Slider, 3000);
 
+//make a seperate function for the pause
 function PauseSlideShow() {
     pause.innerText = 'Play';
     play = false;
+    //stop the interval
     clearInterval(Timer);
 }
 
+//seperate function for play
 function PlaySlideShow() {
     pause.innerText = "Pause";
     play = true;
+    //start the interval again
     Timer = setInterval(Slider, 3000);
 }
 
+//add the functions to the button with a if/else in another function
 function PausePlay() {
     if(play) {
         PauseSlideShow();
@@ -43,7 +49,6 @@ function keyboard(event) {
 }
 
 function GoToSlide(n) {
-    //debugger;
     document.querySelector('.slide').src = images[CurrentSlide];
 
     /*add n to the images length and use a modulus to get the remainder. 
